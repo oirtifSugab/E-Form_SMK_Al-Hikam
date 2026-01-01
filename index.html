@@ -183,8 +183,9 @@
                 </select>
             </div>
             
-            <div class="form-group"><label>Pekerjaan Ayah:</label>
-                <select id="in_pek_ayah">
+            <div class="form-group">
+                <label>Pekerjaan Ayah:</label>
+                <select id="in_pek_ayah" onchange="toggleLainnya(this)">
                     <option value="">Pilih</option>
                     <option value="Petani">Petani</option>
                     <option value="Nelayan">Nelayan</option>
@@ -195,6 +196,7 @@
                     <option value="Buruh">Buruh</option>
                     <option value="Lainnya">Lainnya</option>
                 </select>
+                <input type="text" id="in_pek_ayah_lain" placeholder="Sebutkan pekerjaan..." style="display:none; margin-top:5px; border: 1px dashed #666;">
             </div>
             
             <div class="form-group">
@@ -308,7 +310,11 @@
                         <div class="check-item"><div class="box-check" id="out_joba_swasta"></div> Swasta</div>
                         <div class="check-item"><div class="box-check" id="out_joba_wira"></div> Wirausaha</div>
                         <div class="check-item"><div class="box-check" id="out_joba_buruh"></div> Buruh</div>
-                        <div class="check-item"><div class="box-check" id="out_joba_lain"></div> Lainnya</div>
+                        
+                        <div class="check-item" style="display:flex; align-items:center;">
+                            <div class="box-check" id="out_joba_lain"></div> Lainnya: 
+                            <div id="out_joba_lain_text" class="box-container" style="margin-left: 5px;"></div>
+                        </div>
                     </div>
                 </td>
             </tr>
@@ -358,6 +364,17 @@
     </div>
 
     <script>
+        // Fungsi untuk menampilkan input teks jika 'Lainnya' dipilih
+        function toggleLainnya(selectEl) {
+            var inputLain = document.getElementById('in_pek_ayah_lain');
+            if (selectEl.value === 'Lainnya') {
+                inputLain.style.display = 'block';
+                inputLain.focus();
+            } else {
+                inputLain.style.display = 'none';
+                inputLain.value = ''; // Reset jika batal pilih
+            }
+        }
         // === LOGIKA PILIHAN TANGGAL ===
         window.onload = function() {
             // Tanggal 1-31
@@ -514,6 +531,17 @@
             setCheck('out_joba_wira', pekAyah === 'Wirausaha');
             setCheck('out_joba_buruh', pekAyah === 'Buruh');
             setCheck('out_joba_lain', pekAyah === 'Lainnya');
+            // --- LOGIKA TEKS PEKERJAAN LAINNYA ---
+            let valPek = document.getElementById('in_pek_ayah').value;
+            if (valPek === 'Lainnya') {
+                // Ambil teks dari input manual
+                let textLain = document.getElementById('in_pek_ayah_lain').value;
+                // Cetak ke kotak di samping checkbox (Maksimal 12 huruf agar muat)
+                createBoxes(textLain, 'out_joba_lain_text', 12);
+            } else {
+                // Kosongkan jika bukan Lainnya
+                document.getElementById('out_joba_lain_text').innerHTML = '';
+            }
 
             // Tanggal Hari Ini (Footer)
             const today = new Date();
