@@ -313,7 +313,7 @@
                         
                         <div class="check-item" style="display:flex; align-items:center;">
                             <div class="box-check" id="out_joba_lain"></div> Lainnya: 
-                            <div id="out_joba_lain_text" style="margin-left: 5px; border-bottom: 1px dotted black; min-width: 150px; font-weight: bold; text-transform: uppercase; padding-left: 5px;"></div>
+                            <div id="out_joba_lain_text" style="margin-left: 5px; min-width: 150px; font-weight: bold; text-transform: uppercase; padding-left: 5px;"></div>
                         </div>
                     </div>
                 </td>
@@ -532,14 +532,24 @@
             setCheck('out_joba_buruh', pekAyah === 'Buruh');
             setCheck('out_joba_lain', pekAyah === 'Lainnya');
             
-            // --- LOGIKA TEKS PEKERJAAN LAINNYA (UBAH DISINI) ---
+            // --- LOGIKA TEKS PEKERJAAN LAINNYA (UPDATE FITUR GARIS OTOMATIS) ---
             let valPek = document.getElementById('in_pek_ayah').value;
+            let divLain = document.getElementById('out_joba_lain_text'); // Ambil elemen wadahnya
+
             if (valPek === 'Lainnya') {
                 let textLain = document.getElementById('in_pek_ayah_lain').value;
-                // Langsung masukkan teks uppercase tanpa kotak
-                document.getElementById('out_joba_lain_text').innerText = textLain.toUpperCase();
+                
+                // 1. Isi teksnya
+                divLain.innerText = textLain.toUpperCase();
+                
+                // 2. MUNCULKAN garis titik-titik
+                divLain.style.borderBottom = "1px dotted black"; 
             } else {
-                document.getElementById('out_joba_lain_text').innerText = '';
+                // 1. Kosongkan teks
+                divLain.innerText = "";
+                
+                // 2. HILANGKAN garis titik-titik
+                divLain.style.borderBottom = "none";
             }
 
             // Tanggal Hari Ini (Footer)
