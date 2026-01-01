@@ -100,6 +100,40 @@
             #print-area { display: block; }
             @page { size: A4; margin: 10mm; }
         }
+
+        /* --- TAMBAHAN CSS FOOTER PETUNJUK --- */
+        .info-box {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px dashed #aaa;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #444;
+        }
+        .info-box ol {
+            margin: 5px 0 15px 0;
+            padding-left: 20px;
+        }
+        .info-box li {
+            margin-bottom: 5px;
+        }
+        .btn-wa {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #25D366; /* Warna Hijau WA */
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn-wa:hover {
+            background-color: #128C7E;
+        }
+
     </style>
 </head>
 <body>
@@ -182,6 +216,26 @@
             <div class="form-group"><label>No. HP:</label><input type="text" id="in_hp"></div>
         </form>
         <button class="btn-print" onclick="preparePrint()">SIMPAN/CETAK FORMULIR</button>
+        <button class="btn-print" onclick="preparePrint()">SIMPAN/CETAK FORMULIR</button>
+
+        <div class="info-box">
+            <strong>PETUNJUK:</strong>
+            <ol>
+                <li>Nama file PDF otomatis tersimpan dengan <b>Nama Lengkap Calon Siswa</b>.</li>
+                <li>Setelah file tersimpan, kirimkan file PDF tersebut ke Panitia SPMB.</li>
+            </ol>
+            
+            <a href="https://wa.me/6281906522647?text=Assalamualaikum,%20saya%20ingin%20mengirimkan%20formulir%20pendaftaran." target="_blank" class="btn-wa">
+                KIRIM PDF KE NO WA INI (+62 819-0652-2647)
+            </a>
+        </div>
+        ```
+
+### Penjelasan Singkat:
+1.  **CSS:** Membuat kotak abu-abu putus-putus agar terlihat sebagai area informasi tambahan, dan membuat tombol hijau khas WhatsApp.
+2.  **HTML:**
+    * Menampilkan daftar petunjuk (1 & 2).
+    * Menambahkan link `<a href="https://wa.me/...">`. Saya sudah memformat nomornya menjadi standar internasional (`628...`) tanpa spasi atau strip agar link berfungsi otomatis membuka aplikasi WhatsApp. Saya juga menambahkan pesan otomatis "Assalamualaikum..." saat diklik.
     </div>
 
     <div id="print-area">
