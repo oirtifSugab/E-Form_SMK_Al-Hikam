@@ -315,6 +315,7 @@
             
             <tr><td class="col-label">Alamat</td><td class="col-colon">:</td><td class="col-input"><div class="box-container" id="out_alamat_ortu_1"></div></td></tr>
             <tr><td class="col-label"></td><td class="col-colon"></td><td class="col-input"><div class="box-container" id="out_alamat_ortu_2"></div></td></tr>
+            <tr><td class="col-label"></td><td class="col-colon"></td><td class="col-input"><div class="box-container" id="out_alamat_ortu_3"></div></td></tr>
 
             <tr><td colspan="3" style="height: 5px;"></td></tr>
 
@@ -469,8 +470,10 @@
             let alamatOrtu = document.getElementById('in_alamat_ortu').value.toUpperCase();
             let alamatOrtu1 = alamatOrtu.substring(0, limit);
             let alamatOrtu2 = alamatOrtu.substring(limit, limit*2);
+            let alamatOrtu3 = alamatOrtu.substring(limit*2, limit*3);
             createBoxes(alamatOrtu1, 'out_alamat_ortu_1', MAX_LONG);
             createBoxes(alamatOrtu2, 'out_alamat_ortu_2', MAX_LONG);
+            createBoxes(alamatOrtu3, 'out_alamat_ortu_3', MAX_LONG);
 
             // 3. Pilihan (Checklist)
             let jk = document.getElementById('in_jk').value;
